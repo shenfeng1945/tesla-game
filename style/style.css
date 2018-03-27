@@ -1,0 +1,504 @@
+*,*::after,*::before{margin:0;padding:0;box-sizing: border-box;color:#313131; font-weight: lighter;font-style: normal;border:none;font-family: 'Microsoft YaHei';}
+a{text-decoration: none;}
+ul,ol{list-style:none;}
+img{pointer-events: none;-webkit-user-select:none;-moz-user-select:none;user-select:none;}
+html{
+  height:100%;
+  width:100%;
+}
+body{
+  height:100%;
+  width:100%;
+  font-size:0.325rem;
+}
+.center1{
+  display: flex;justify-content: center;align-items:center;
+}
+.runningBackGroundImg{
+  background:transparent url('http://p68cy51nt.bkt.clouddn.com/runningLoad.jpg') no-repeat center;
+  /* background:transparent url('http://www.sunnet.net.cn/static/carGame/images/rungif.gif') no-repeat center; */
+  background-size:cover;
+  z-index:0;
+  position: absolute;
+  top:0;left:0;right:0;bottom:0;
+  display: none;
+}
+.slowBackGroundImg{
+  background:transparent url('http://p68cy51nt.bkt.clouddn.com/original2.jpg') no-repeat center;
+  background-size:cover;
+  z-index:0;
+  position: absolute;
+  top:0;left:0;right:0;bottom:0;
+  display: none;
+}
+.beginBackGroundImg{
+  background:transparent url('http://p68cy51nt.bkt.clouddn.com/original.jpg') no-repeat center;
+  background-size:cover;
+  position: absolute;
+  top:0;left:0;right:0;bottom:0;
+  z-index:0;
+}
+.page{
+  /* height:100vh; */
+  height:100%;
+  overflow: hidden;
+  position: relative;
+}
+.blur{
+  background:url('http://p68cy51nt.bkt.clouddn.com/blur.png') no-repeat center;
+  background-size:cover;
+}
+.controls{
+  display: flex;
+  justify-content: space-between;
+  position:absolute;
+  bottom:2.575rem;
+  left:0;right:0;width:100%;
+  padding:0 2rem;
+  z-index:3;
+}
+.controls .brakes,
+.controls .accelerates{
+  padding: 0 0.825rem;
+  user-select: none;
+}
+/* 刹车油门按时切换状态*/
+.controls .brakes .brake-touch{
+  display: none;
+}
+.controls .accelerates .accelerate-touch{
+  display: none;
+} 
+.controls .accelerates.active .accelerate-touch{
+  display: inline;
+}
+.controls .accelerates.active .accelerate-normal{
+  display: none;
+}
+.controls .brakes.active .brake-normal{
+  display: none;
+}
+.controls .brakes.active .brake-touch{
+  display: inline;
+}
+.controls img{
+  width:1.825rem;
+  height:3.625rem;
+}
+.carImg{
+  position:absolute;
+  width:9.95rem;
+  height:17.275rem;
+  left:50%;
+  transform: translateX(-50%);
+  bottom:2.3rem;
+  z-index:2;
+}
+.carImg img.car,
+.carImg img.car1{
+  max-width:100%;
+  height:100%;
+}
+.carImg img.taillight{
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  width:3.675rem;
+  height:auto;
+  bottom:4.5rem;
+  display: none;
+}
+.carImg img.taillightBack{
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  width:8.5rem;
+  height:auto;
+  top:6.5rem;
+  display: none;
+  z-index:-1;
+}
+.carImg .car{
+  display: block;
+}
+.carImg .car1{
+  display: none;
+}
+.carImg .blow1,
+.carImg .blow2{
+  width:3.475rem;
+  position: absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:9.85rem;
+  display: none;
+  z-index:-1;
+}
+.carImg .blow1.active,
+.carImg .blow2.active{
+  display: block;
+}
+.carImg .runLight,
+.carImg .endLight{
+  width:11.45rem;
+  height:auto;
+  display: none;
+}
+.carImg .runLight.active,
+.carImg .endLight.active{
+  display: block;
+}
+#myCar{
+  width:100vw;
+  height:100vh;
+}
+
+#carImg{
+  
+}
+/* 顶部 */
+.topBar{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  height:3.775rem;
+  /* background:url('../images/topBar.png') no-repeat 0 -32px; */
+  background-size:cover;
+  z-index:6;
+}
+.topBar>.life-rank{
+  display:flex;
+  justify-content: space-between;
+  /* padding:0 1.2rem; */
+  margin-top:0.65rem;
+  /* padding-left:0; */
+  padding-right:1.125rem;
+  align-items: center;
+}
+.topBar>.life-rank>.life{
+   display: flex;
+   background:url('http://p68cy51nt.bkt.clouddn.com/lugubeijing.png') no-repeat -1.2rem 0;
+   background-size:cover;
+   /* padding-right:1.0rem; */
+   padding-top:.4rem;
+   padding-bottom:.4rem;
+   /* height:1.5rem; */
+   align-items: center;
+   width:9.6rem;
+}
+.topBar>.life-rank>.life>span{
+  margin-left:0.575rem;
+  margin-right:0.28rem;
+}
+.topBar .life>.life-nums{
+  display: flex;
+  align-items:center;
+}
+.topBar .life span{
+  font-family: 'PingFang-SC-Medium';
+  color:#fff;
+  -webkit-text-stroke: .5px rgb(23,102,173);
+  font-weight: bold;
+  font-size:.65rem;
+}
+.topBar .life img{
+  width:0.8rem;
+  height:0.8rem;
+  vertical-align: top;
+}
+.topBar .life img.halfImg{
+  width:0.4rem;
+}
+.topBar>.life-rank>.rank {
+  padding-top:.4rem;
+}
+.topBar>.life-rank>.rank span{
+  font-family: 'PingFang-SC-Medium';
+  font-size:0.675rem;
+  color:rgb(255,153,0);
+  -webkit-text-stroke: .5px rgba(23,102,173,.5);
+  font-weight: bold;
+  font-style:oblique;
+
+}
+.topBar>.use-time{
+  color:white;
+  /* font-family: "Impact"; */
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+  font-size:33px;
+  font-weight: bold;
+  text-align: center;
+  -webkit-text-stroke: 1px #000;
+  margin-top:1.05rem;
+}
+.topBar>.use-time span{
+  /* 给每个时间固定宽度，防止变化时因字体宽度不一致而抖动 */
+  display: inline-block;
+  width:2.045rem;
+  color:white;
+  /* font-family: "Impact"; */
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+  font-size:33px;
+  font-weight: bold;
+
+}
+/* ready-go */
+.ready-go{
+  text-align: center;
+  top:5rem;
+  left:50%;
+  transform:translateX(-50%);
+  position:absolute;
+  display: none;
+}
+.ready-go .first-line{
+  font-size:30px;
+  color:white;
+  font-weight: 900;
+}
+.ready-go .second-line{
+  font-size:50px;
+  color:white;
+  font-weight: bold;
+}
+/* 提示信息 */
+.msg{
+  position:absolute;
+  right:0.925rem;
+  bottom:36%;
+  z-index:2;
+}
+.msg .reducePoint{
+  font-size:0.65rem;
+  font-family: 'PingFang-SC-Regular';
+  color:rgb(255,153,51);
+  display: none;
+}
+.msg .goodJob{
+  font-size:0.65rem;
+  font-family: 'PingFang-SC-Regular';
+  color:rgb(255,153,51);
+  display: none;
+}
+.msg .goodJob.active{
+  display: block;
+}
+.msg .reducePoint span{
+  font-size:0.65rem;
+  font-family: 'PingFang-SC-Regular';
+  color:rgb(255,153,51);
+}
+.msg .reducePoint.active{
+  display: block;
+}
+/* 图片提示信息 */
+.msgImg{
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  top:6.25rem;
+  z-index:2;
+}
+.msgImg .readyGoImg{
+  width:9.55rem;
+}
+.msgImg .timeover,
+.msgImg .hubMsg{
+  width:9.65rem;
+}
+.msgImg .go{
+  width:5rem;
+}
+.msgImg img{
+  display: none;
+}
+.msgImg img.active{
+  display: block;
+}
+.msgImg .gameOver{
+  margin-top:1.2rem;
+  width:12.2rem;
+  display: none;
+}
+.msgImg .gameOver.active{
+  display: block;
+}
+.msgImg .hinderCome{
+  margin-top:1.2rem;
+  display: none;
+  width:12.5rem;
+  height:auto;
+}
+.msgImg .hinderCome.active{
+  display:block;
+}
+/* 游戏结束提交 */
+.popover-wrapper{
+  position: absolute;
+  left:0;right:0;top:0;bottom:0;
+  filter:drop-shadow(13px 5px 16px #000);; 
+  background:rgba(0,0,0,.2);
+  z-index:5;
+  display: none;
+}
+.popover-wrapper.active{
+  display: block;
+}
+.popover-wrapper .popover{
+  position: absolute;
+  /* background:white; */
+  top:3.925rem;left:1.575rem;right:1.575rem;
+  bottom:3.625rem;
+  padding-top:2.425rem;
+  padding-left:.55rem;
+  padding-right:.55rem;
+  background:linear-gradient(to bottom,rgb(51,51,51),rgb(51,51,51),rgba(0,0,0,0));
+  z-index:3;
+  height:15.6rem;
+}
+.popover-wrapper .popover .userImg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popover-wrapper .popover .userImg .winner{
+  width:3.6rem;
+  height:3.6rem;
+  border-radius: 5px;
+}
+.popover-wrapper .popover .userImg img{
+  max-width:100%;
+  height:100%;
+  border-radius:0.25rem;
+  width:100%;
+}
+.popover-wrapper .popover .userImg .koLogo{
+  width:3.45rem;
+  height:2.775rem;
+}
+.popover-wrapper .popover .userImg .loser{
+  width:3.6rem;
+  height:3.6rem;
+  border-radius: 5px;
+}
+.popover-wrapper .popover .userImg .loser.active .animated{
+  display: block;
+}
+.popover-wrapper .popover .userImg .loser .animated{
+  display: none;
+}
+.popover-wrapper .popover .userImg .loser.active .gray{
+  display:none;
+}
+.popover-wrapper .popover .userImg .loser .gray{
+  display: block;
+}
+/* 分割线 */
+.popover-wrapper .popover .fengeLine{
+  width:14.5rem;
+  margin-top:0.725rem;
+}
+.popover-wrapper .popover .fengeLine img{
+  max-width:100%;
+}
+.popover-wrapper .popover .allPoints{
+  text-align: center;
+  font-size:0.85rem;
+  color:white;
+  font-family: 'PingFang-SC-Regular';
+  margin-top:0.5rem;
+}
+.popover-wrapper .popover .allPoints .point{
+  color:white;
+  font-family:'PingFang-SC-Regular';
+  font-size:0.85rem;
+}
+.popover-wrapper .popover p{
+  font-size:0.75rem;
+  font-family:'PingFang-SC-Regular';
+  color:white;
+  font-weight: bold;
+}
+.popover-wrapper .popover p.one{
+  margin-top:0.8rem;
+  margin-left:1.45rem;
+}
+.popover-wrapper .popover p.two{
+  margin-top:.8rem;
+  margin-left:1.45rem;
+  font-size:.7rem;
+  color:rgb(204,204,204);
+}
+.popover-wrapper .popover .three{
+  margin-top:1.2rem;
+  margin-left:1.45rem;
+  display: flex;
+  align-items:center;
+}
+.popover-wrapper .popover .three p{
+  font-size:.7rem;
+  color:rgb(204,204,204);
+}
+.popover-wrapper .popover .three input{
+  font-size:0.75rem;
+  outline:none;
+  background:rgba(0,0,0,0);
+  color:white;
+  border-bottom:1px solid white;
+  font-weight: bold;
+  width:9.65rem;
+}
+.popover-wrapper .popover .submit{
+  width:9.75rem;
+  margin:0 auto;
+  margin-top:2.5rem;
+  position: relative;
+}
+.popover-wrapper .popover .submit .submitMsg{
+  width:8.05rem;
+  position: absolute;
+  height:1.9rem;
+  left:50%;
+  transform: translateX(-50%);
+  top:.7rem;
+  z-index:4;
+}
+.popover-wrapper .popover .submit img{
+  max-width: 100%;
+}
+.popover-wrapper .popover .edition{
+  margin-top:.7rem;
+}
+.popover-wrapper .popover .edition p{
+  text-align: center;
+  font-size:.6rem;
+  color:rgb(204,204,204);
+}
+
+
+.weui-toptips {
+  display: none;
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  z-index: 5000;
+  word-wrap: break-word;
+  word-break: break-all
+}
+
+.weui-toptips_warn {
+  background-color: #e64340
+}
+.weui-toptips{z-index:100;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s}
+.weui-toptips.weui-toptips_visible{opacity:1}
+.bg-error{color:#fff;background-color:#f6383a;}
+.bg-success{color:#fff;background-color:#4cd964;}

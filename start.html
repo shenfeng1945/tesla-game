@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>开始游戏</title>
+  <script src="js/jquery_min.js"></script>
+  <style>
+    *{
+      margin:0;padding:0;box-sizing:border-box;
+    }
+   body{
+     background: url('http://p68cy51nt.bkt.clouddn.com/kaishiyouxibeijing.jpg') no-repeat center;
+     background-size:cover;
+     overflow: hidden;
+     position:relative;
+   } 
+   a{
+     position:absolute;
+     bottom:5rem;
+     left:50%;
+     transform:translateX(-50%);
+     width:7.7rem;
+     height:2rem;
+     z-index:2;
+   }
+   img{
+     position:absolute;
+     bottom:2rem;
+     left:50%;
+     transform:translateX(-50%);
+     width:13rem;
+   }
+  </style>
+</head>
+<body style="height:100%;">
+     <a href="javascript:;" class="login"></a>
+     <img src="http://p68cy51nt.bkt.clouddn.com/startGame.png" alt="">
+     <input type="hidden" id="openid" value="${openid}">
+     <input type="hidden" id=headimgurl value="${headimgurl}">
+     <input type="hidden" id="nickname" value="${nickname}">
+     <input type="hidden" id="country" value="${country}">
+     <input type="hidden" id="sex" value="${sex}">
+     <input type="hidden" id="province" value="${province}">
+     <input type="hidden" id="city" value="${city}">
+</body>
+<script>
+  (function(doc,win){
+    var docEl = doc.documentElement
+    var clientWidth = docEl.clientWidth;
+    if (!clientWidth) return;
+    docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+  })(document,window)
+</script>
+<script>
+  // $('a').attr('href','${pageContext.request.contextPath}/user/player/httpurl?url=index&openid='+$('#openid').val()+'&headimgurl='+$('#headimgurl').val()+'&nickname='+$('#nickname').val()+'&random='+Math.random())
+  // $(window).load(function(){
+  //    var startTime = Date.parse(new Date(2018,0,20,07,0))
+  //    var endTime = Date.parse(new Date(2018,0,20,21,0))
+  //    $('a').on('click',function(){
+  //    var now = new Date()
+  //      if(now<startTime || now>endTime){
+  //       //  alert('2018年1月20日13:00-22:00开放，敬请期待![温馨提示]你只有一次机会，游戏过程请不要刷新页面或点击返回')
+  //       //  return;
+  //      }
+  //      $.ajax({
+  //         type: 'get',
+  //         url: '${pageContext.request.contextPath}/play/play/list',
+  //         success: function (data) {
+  //           if(data.list[0].play=='1'){
+  //             window.location.href = '${pageContext.request.contextPath}/user/player/httpurl?url=index&'+$('#openid').val()+'&'+$('#headimgurl').val()+'&'+$('#nickname').val()+'&r='+Math.random()
+  //           }else{
+  //             alert('游戏将于2018年1月20日13:00-22:00开放,敬请等待!')
+  //           }
+  //         }
+  //      })
+  //    })
+  // })
+  $('.login').on('click',function(){
+    alert('获取用户信息，需部署在微信公众号')
+  })
+</script>
+</html>
