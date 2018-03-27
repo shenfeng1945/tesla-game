@@ -7,7 +7,7 @@ var o = {
       ctx3:null,
       model:{
         hubString:'<li><img class="animated" src="http://p68cy51nt.bkt.clouddn.com/hub.png" /></li>',
-        halfHubString:'<li><img class="halfImg animated" src="http://p68cy51nt.bkt.clouddn.com/hubover.png" /></li>'
+        halfHubString:'<li><img class="halfImg animated" src="http://p68cy51nt.bkt.clouddn.com/half-hub.png" /></li>'
       },
       colors: {
         sky: "#D4F5FE",
